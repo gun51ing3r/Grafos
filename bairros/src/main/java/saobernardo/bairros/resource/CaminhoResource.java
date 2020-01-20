@@ -3,6 +3,9 @@ package saobernardo.bairros.resource;
 import java.net.URI;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
@@ -74,6 +77,28 @@ public class CaminhoResource {
 		caminhoRepository.deleteById(codigo_caminho);
 		
 		return ResponseEntity.ok().build();
+	}
+	
+	@GetMapping("/teste")
+	public List<Caminho> consultar(){
+		
+		String query = "select * from caminhos";
+		
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("Bairros");
+			
+			EntityManager em = emf.createEntityManager();
+			
+			List<Caminho> listaDeCaminhos = em
+					.createQuery(query, Caminho.class)
+					.getResultList();
+			
+			System.out.println(listaDeCaminhos.size());
+			
+			em.close();
+			
+		emf.close();
+		
+		return listaDeCaminhos;
 	}
 	
 }
