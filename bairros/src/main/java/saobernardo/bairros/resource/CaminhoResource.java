@@ -82,17 +82,11 @@ public class CaminhoResource {
 	@GetMapping("/teste")
 	public List<Caminho> consultar(){
 		
-		String query = "select * from caminhos";
-		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("Bairros");
 			
 			EntityManager em = emf.createEntityManager();
 			
-			List<Caminho> listaDeCaminhos = em
-					.createQuery(query, Caminho.class)
-					.getResultList();
-			
-			System.out.println(listaDeCaminhos.size());
+				List<Caminho> listaDeCaminhos = em.createQuery("select c from caminhos c", Caminho.class).getResultList();
 			
 			em.close();
 			
