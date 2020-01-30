@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Entity(name = "caminhos")
 @Component
-public class Caminho {
+public class Aresta {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -24,11 +24,11 @@ public class Caminho {
 	@Column(nullable = false)
 	private double distancia;
 	
-	public Caminho() {
+	public Aresta() {
 
 	}
 	
-	public Caminho(int codigo_caminho, String origem, String destino, double distancia) {
+	public Aresta(int codigo_caminho, String origem, String destino, double distancia) {
 		super();
 		this.codigo_caminho = codigo_caminho;
 		this.origem = origem;

@@ -2,20 +2,18 @@ package saobernardo.bairros.dto;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.springframework.stereotype.Component;
-
-import saobernardo.bairros.domain.Caminho;
+import saobernardo.bairros.domain.Aresta;
 
 @Component
-public class CaminhoDTO {
+public class ArestaDTO {
 
 	private int codigo_caminho;
 	private String origem;
 	private String destino;
 	private double distancia;
 
-	public CaminhoDTO(Caminho caminho) {
+	public ArestaDTO(Aresta caminho) {
 		super();
 		this.codigo_caminho = caminho.getCodigo_caminho();
 		this.origem = caminho.getOrigem();
@@ -55,9 +53,9 @@ public class CaminhoDTO {
 		this.distancia = distancia;
 	}
 
-	public List<CaminhoDTO> converter(List<Caminho> listaDeCaminhos) {
+	public List<ArestaDTO> converter(List<Aresta> listaDeArestas) {
 		
-		return listaDeCaminhos.stream().map(CaminhoDTO::new).collect(Collectors.toList());
+		return listaDeArestas.stream().map(ArestaDTO::new).collect(Collectors.toList());
 	}
 	
 }
